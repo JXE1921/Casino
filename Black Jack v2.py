@@ -57,7 +57,7 @@ def Name(players): # Creates a list based on player names and then send that int
                 playerlist = []
                 for count in range(players):
                     playerlist.append("Player"+str(count+1))
-                Balancelist = Money.initialiseBalance(playerlist) # Calls class methos to create a list of objects
+                Balancelist = Money.initialiseBalance(playerlist) # Calls class method to create a list of objects
                 return Balancelist , None
                 break
             else: # Add some more tweaks
