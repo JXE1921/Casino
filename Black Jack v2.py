@@ -5,18 +5,6 @@ from money import Money
 from cards import Cards
 
 
-def Main():
-    print("Welcome to the royal tempest")
-    print("Press any key to continue...")
-    msvcrt.getch()
-    #print("\033[31mThis text is red\033[0m")
-    print("If you need the rules, you can navigate back to the home page\n" + "Other wise Lets play some BlackJack\n")
-    sleep(1)
-    Playercount = GetNumberOfPlayers()
-    Balance_list,Names = Name(Playercount) # This is a temporary list of objects that contain every player in the game excluding the cards that they are going to be dealt, Also gives a list of player names and is None if no names were given
-    Card_list = Cards.start_dealing_cards(Playercount)
-    Player_card_list = Cards.Assign_cards(Balance_list,Card_list) # This is a list of objects that contain every player in the game including the cards that have been dealt to them in the first round
-
 
 def GetNumberOfPlayers():  # Asks user for number of players and then checks if it is a valid amount, then returns value back to the main function
    while True:
@@ -32,7 +20,7 @@ def GetNumberOfPlayers():  # Asks user for number of players and then checks if 
             print("\nSorry, the number of Players must be a whole number. Please try again\n")
             continue
         return number_of_players
-            
+           
 
 def Name(players): # Creates a list based on player names and then send that into a diff funtion to generate balance
     while True:
@@ -70,13 +58,39 @@ def Name(players): # Creates a list based on player names and then send that int
             continue
                    
 
+def Start_game(playerlist): # Needs ALOT of work but basic input system is live and Cards class is called where player should be able to get an infinite number of cards, Also add a list attribute to store the player's cards
+        while True:
+            for player in playerlist:
+                try:
+                    choice = input(f"{player.name} your first card is {player.first_card} and your second is the {player.second_card}. Do you want to hit or stand? \n").capitalize().strip("!£$%^&*")
+                    if choice == "Hit":
+                        Cards.deal_another_player_card(player,playerlist)
+                except:
+                    print("Sorry, that's not a valid option, please try again")
+
+
+
+def Main():
+    print("Welcome to the royal tempest")
+    print("Press any key to continue...")
+    msvcrt.getch()
+    #print("\033[31mThis text is red\033[0m")
+    print("If you need the rules, you can navigate back to the home page\n" + "Other wise Lets play some BlackJack\n")
+    sleep(1)
+    Playercount = GetNumberOfPlayers()
+    Balance_list,Names = Name(Playercount) # This is a temporary list of objects that contain every player in the game excluding the cards that they are going to be dealt, Also gives a list of player names and is None if no names were given
+    Card_list = Cards.start_dealing_cards(Playercount)
+    Player_card_list = Cards.Assign_cards(Balance_list,Card_list)# This is a list of objects that contain every player in the game including the cards that have been dealt to them in the first round
+    Start_game(Player_card_list)
+
+    
 
 
 Main()
-    
+   
 
 # Rules:
-# 7 Players 
+# 7 Players
 # Players play against dealer
 # Player gets 2 face up ad dealer gets 1 face up
 # Ace is one or eleven
