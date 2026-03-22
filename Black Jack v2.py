@@ -58,15 +58,18 @@ def Name(players): # Creates a list based on player names and then send that int
             continue
                    
 
-def Start_game(playerlist): # Needs ALOT of work but basic input system is live and Cards class is called where player should be able to get an infinite number of cards, Also add a list attribute to store the player's cards
-        while True:
-            for player in playerlist:
-                try:
-                    choice = input(f"{player.name} your first card is {player.first_card} and your second is the {player.second_card}. Do you want to hit or stand? \n").capitalize().strip("!£$%^&*")
-                    if choice == "Hit":
-                        Cards.deal_another_player_card(player,playerlist)
-                except:
-                    print("Sorry, that's not a valid option, please try again")
+def Start_game(playerlist): # Gives a player an infinite number cards but needs the score system but also needs to give the player 2 cards without asking for a choice
+   for player in playerlist:
+      while True:
+         try:
+            Money.print_player_cards(player)
+            choice = input(f"{player.name},Do you want to hit or stand? \n").capitalize().strip("!£$%^&*")
+            if choice == "Hit":
+               Cards.deal_another_player_card(player,playerlist)
+            elif choice == "Stand":
+               break
+         except:
+            print("Sorry, that's not a valid option, please try again")
 
 
 
@@ -83,7 +86,7 @@ def Main():
     Player_card_list = Cards.Assign_cards(Balance_list,Card_list)# This is a list of objects that contain every player in the game including the cards that have been dealt to them in the first round
     Start_game(Player_card_list)
 
-    
+   
 
 
 Main()

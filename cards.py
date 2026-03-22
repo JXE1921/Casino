@@ -8,20 +8,20 @@ class Cards():
             "Spades A","Spades 2", "Spades 3" , "Spades 4" , "Spades 5" , "Spades 6" , "Spades 7" , "Spades 8" , "Spades 9" , "Spades 10" , "Spades J" , "Spades Q" , "Spades K",
             "Clovers A","Clovers 2", "Clovers 3" , "Clovers 4" , "Clovers 5" , "Clovers 6" , "Clovers 7" , "Clovers 8" , "Clovers 9" , "Clovers 10" , "Clovers J" , "Clovers Q" , "Clovers K"
             ]
-    
+   
     check_deck = set()  # Using set data structure to adds cards when they can be distributed
-    
+   
     def distributed_cards(card): # Designed to check whether or not the cards have been distributed
         if card not in Cards.check_deck:
             Cards.check_deck.add(card)
             return True
         return False
-    
-    
-    
+   
+   
+   
     def start_dealing_cards(player_count): # Designed to iterate until a valid amount of legal cards can be distributed back to the user
         player_cards = []
-        while len(player_cards) != player_count *2:
+        while len(player_cards) != player_count * 2:
             randomnum1 = randint(0,len(Cards.deck)-1)
             card = Cards.deck[randomnum1]
             check = Cards.distributed_cards(card)
@@ -30,7 +30,7 @@ class Cards():
             else:
                 continue
         return player_cards
-    
+   
     def dealer_cards(): # Designed to return one valid card for the dealer
         dealer_card_list = []
         while True:
@@ -43,11 +43,19 @@ class Cards():
                 break
             else:
                 continue
-    def Assign_cards(playerlist,cardlist):
+    def Assign_cards(playerlist,cardlist): # A simple function desgined to add the cards to the player's card list
         for player in playerlist:
-            player.first_card = cardlist[0]
+            player.list.append(cardlist[0])
             cardlist.pop(0)
-            player.second_card = cardlist[0]
+            player.list.append(cardlist[0])
             cardlist.pop(0)
-
         return playerlist
+
+    def deal_another_player_card(player,playerlist): # A function that allows the player to get another card
+        while True:
+            randomnum1 = randint(0,len(Cards.deck)-1)
+            card = Cards.deck[randomnum1]
+            check = Cards.distributed_cards(card)
+            if check:
+                player.list.append(card)
+                break
