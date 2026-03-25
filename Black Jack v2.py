@@ -44,7 +44,7 @@ def Name(players): # Creates a list based on player names and then send that int
             elif name.capitalize().strip("!£$%^&*") == "No":
                 playerlist = []
                 for count in range(players):
-                    playerlist.append("Player"+str(count+1))
+                    playerlist.append("Player "+str(count+1))
                 Balancelist = Money.initialiseBalance(playerlist) # Calls class method to create a list of objects
                 return Balancelist , None
                 break
@@ -58,7 +58,7 @@ def Name(players): # Creates a list based on player names and then send that int
             continue
                    
 
-def Start_game(playerlist): # Gives a player an infinite number cards but needs the score system but also needs to give the player 2 cards without asking for a choice
+def Start_game(playerlist): # Gives a player an infinite number cards but needs the score system
    for player in playerlist:
       while True:
          try:

@@ -20,13 +20,5 @@ class Money:
         return playerlist
 
     def print_player_cards(player): # Designed to use show the player their cards each time they choose to hit
-        for i in range(0,len(player.list)-1):
-            if i == 0:
-                print(f"This is your {i+1}st card, {player.list[i]}\n")
-            elif i == 1:
-                print(f"This is your {i+1}nd card, {player.list[i]}\n")
-            elif i == 2:
-                print(f"This is your {i+1}rd card, {player.list[i]}\n")
-            else:
-                print(f"This is your {i+1}th card, {player.list[i]}\n")
-
+        for i in player.list:
+            print(f"Your card is {i} \n ")
