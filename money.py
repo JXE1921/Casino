@@ -9,11 +9,12 @@ class Money:
         Money.player_count +=1
         self.balance = Money.balance
         self.list = [] # Stores a list of the player's cards
-   
+
+
     def __repr__(self): # Simple formatting function
         return f"{self.position}: £{self.balance}"
 
-    def initialiseBalance(list): # Given a list of names, it returns a list of objects within the class
+    def initialise_balance(list): # Given a list of names, it returns a list of objects within the class
         playerlist = []
         for count in range(0,len(list)):
             playerlist.append(Money("Player "+ str(count+1), list[count]))

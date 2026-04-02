@@ -30,7 +30,7 @@ class Cards():
             else:
                 continue
         return player_cards
-   
+
     def dealer_cards(): # Designed to return one valid card for the dealer
         dealer_card_list = []
         while True:
@@ -43,7 +43,7 @@ class Cards():
                 break
             else:
                 continue
-    def Assign_cards(playerlist,cardlist): # A simple function desgined to add the cards to the player's card list
+    def assign_cards(playerlist,cardlist): # A simple function desgined to add the cards to the player's card list
         for player in playerlist:
             player.list.append(cardlist[0])
             cardlist.pop(0)

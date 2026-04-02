@@ -6,8 +6,8 @@ from cards import Cards
 
 
 
-def GetNumberOfPlayers():  # Asks user for number of players and then checks if it is a valid amount, then returns value back to the main function
-   while True:
+def get_number_of_players():  # Asks user for number of players and then checks if it is a valid amount, then returns value back to the main function
+    while True:
         try:
             sleep(1)
             number_of_players = int(input("Please state the number of Players joining the casino today(Up to 7 max): \n"))
@@ -20,9 +20,8 @@ def GetNumberOfPlayers():  # Asks user for number of players and then checks if 
             print("\nSorry, the number of Players must be a whole number. Please try again\n")
             continue
         return number_of_players
-           
 
-def Name(players): # Creates a list based on player names and then send that into a diff funtion to generate balance
+def name(players): # Creates a list based on player names and then send that into a diff funtion to generate balance
     while True:
         try:
             sleep(1)
@@ -34,7 +33,7 @@ def Name(players): # Creates a list based on player names and then send that int
                         sleep(1)
                         playername = input(f"What is the name of Player {count+1}:\n").capitalize().strip("!£$%^&*")
                         playerlist.append(playername)
-                    Balancelist = Money.initialiseBalance(playerlist) # Calls class method to create a list of objects
+                    Balancelist = Money.initialise_balance(playerlist) # Calls class method to create a list of objects
                     return Balancelist, playerlist
                     break
                 except:
@@ -45,7 +44,7 @@ def Name(players): # Creates a list based on player names and then send that int
                 playerlist = []
                 for count in range(players):
                     playerlist.append("Player "+str(count+1))
-                Balancelist = Money.initialiseBalance(playerlist) # Calls class method to create a list of objects
+                Balancelist = Money.initialise_balance(playerlist) # Calls class method to create a list of objects
                 return Balancelist , None
                 break
             else: # Add some more tweaks
@@ -56,41 +55,37 @@ def Name(players): # Creates a list based on player names and then send that int
             sleep(1)
             print("Sorry, please try again and enter either Yes or No")
             continue
-                   
 
-def Start_game(playerlist): # Gives a player an infinite number cards but needs the score system
-   for player in playerlist:
-      while True:
-         try:
-            Money.print_player_cards(player)
-            choice = input(f"{player.name},Do you want to hit or stand? \n").capitalize().strip("!£$%^&*")
-            if choice == "Hit":
-               Cards.deal_another_player_card(player,playerlist)
-            elif choice == "Stand":
-               break
-         except:
-            print("Sorry, that's not a valid option, please try again")
-
+def start_game(playerlist): # Gives a player an infinite number cards but needs the score system
+    for player in playerlist:
+        while True:
+            try:
+                Money.print_player_cards(player)
+                choice = input(f"{player.name},Do you want to hit or stand? \n").capitalize().strip("!£$%^&*")
+                if choice == "Hit":
+                    Cards.deal_another_player_card(player,playerlist)
+                elif choice == "Stand":
+                    break
+            except:
+                print("Sorry, that's not a valid option, please try again")
 
 
-def Main():
+
+def main():
     print("Welcome to the royal tempest")
     print("Press any key to continue...")
     msvcrt.getch()
     #print("\033[31mThis text is red\033[0m")
     print("If you need the rules, you can navigate back to the home page\n" + "Other wise Lets play some BlackJack\n")
     sleep(1)
-    Playercount = GetNumberOfPlayers()
-    Balance_list,Names = Name(Playercount) # This is a temporary list of objects that contain every player in the game excluding the cards that they are going to be dealt, Also gives a list of player names and is None if no names were given
+    Playercount = get_number_of_players()
+    Balance_list,Names = name(Playercount) # This is a temporary list of objects that contain every player in the game excluding the cards that they are going to be dealt, Also gives a list of player names and is None if no names were given
     Card_list = Cards.start_dealing_cards(Playercount)
-    Player_card_list = Cards.Assign_cards(Balance_list,Card_list)# This is a list of objects that contain every player in the game including the cards that have been dealt to them in the first round
-    Start_game(Player_card_list)
-
-   
+    Player_card_list = Cards.assign_cards(Balance_list,Card_list)# This is a list of objects that contain every player in the game including the cards that have been dealt to them in the first round
+    start_game(Player_card_list)
 
 
-Main()
-   
+main()
 
 # Rules:
 # 7 Players
