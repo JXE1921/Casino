@@ -1,7 +1,11 @@
+#game class
+# deck and card class
+
+
 from random import randint
 from time import sleep
 import msvcrt
-from money import Money
+from money import Money 
 from cards import Cards
 
 
@@ -103,3 +107,15 @@ main()
 # Dealer must hit if less than 16, and stay if more than 16
 # only players with a higher face value than then the dealer win if the delaer doesn't bust
 # If they get a push, same value as dealer, they don't win or lost their bet
+
+
+# TODO: Final design
+# import blackjack
+# if __name__ == '__main__':
+#     game  = BlackJack()
+#     game.start()
+
+# FIXME: Learn about these things:
+
+# @classmethods
+# django

@@ -1,4 +1,4 @@
-class Score(self):
+class Score:
     points = {"2": 2,
                 "3": 3,
                 "4": 4,
@@ -12,7 +12,7 @@ class Score(self):
                 "Q": 10,
                 "K": 10,}
             
-    def assign_score(self, card_list):
+    def assign_score(card_list):
         value = []
         for card in card_list:
             cards = card.split(" ")
@@ -23,27 +23,8 @@ class Score(self):
     
     def sum_score(point_list):
         if 0 in point_list:
-            do_some_complicated_ace_stuff(point_list)
-            return None
+            return do_some_complicated_ace_stuff(point_list)
         sum = 0
         for element in point_list:
             sum += element
         return sum
-
-
-
-
-data = ["Apple A","Banana B","Orange C"]
-
-grades = [item.split()[-1] for item in data]
-print(grades)
-# ['A', 'B', 'C']
-grade_map = {
-    "A": 3,
-    "B": 2,
-    "C": 1
-}
-
-numeric = [grade_map[g] for g in grades]
-print(numeric)
-# [3, 2, 1]

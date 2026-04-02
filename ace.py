@@ -1,0 +1,3 @@
+class Ace(Score):
+    pass
+#

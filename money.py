@@ -23,3 +23,5 @@ class Money:
     def print_player_cards(player): # Designed to use show the player their cards each time they choose to hit
         for i in player.list:
             print(f"Your card is {i} \n ")
+
+# Create a player class that has money inside it
