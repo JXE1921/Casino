@@ -1,27 +1,37 @@
 class Money:
+    '''
+    This class is designed to handle all things relating to the money of the player's and also their betting. 
+    There is an instance of this class as it is easier to keep track of the player's balances but that this means 
+    additional code will be needed in the main function to account for this. It will also handle the gambling aspect of the game.
+    '''
 
-    player_count = 0 # Class variables tht allow for giving each player the inital balance
+    player_count = 0 
     balance = 1000
 
-    def __init__(self,position,name): # Object method to add the player to the class
-        self.position = position
+    def __init__(self,name):
+        '''
+        Instances of the class
+        '''
         self.name = name
-        Money.player_count +=1
         self.balance = Money.balance
-        self.list = [] # Stores a list of the player's cards
 
+    def __repr__(self):
+        ''' Simple formating functions used to check the if the code is proceeding as intended as minising logic errors. '''
+        return f" Name: {self.name}, £{self.balance}"
 
-    def __repr__(self): # Simple formatting function
-        return f"{self.position}: £{self.balance}"
+    def set_up(player_count,bal):
+        ''' Simple method to assign class variables to the user's input. '''
+        Money.balance = bal
+        Money.player_count = player_count
 
-    def initialise_balance(list): # Given a list of names, it returns a list of objects within the class
-        playerlist = []
-        for count in range(0,len(list)):
-            playerlist.append(Money("Player "+ str(count+1), list[count]))
-        return playerlist
-
-    def print_player_cards(player): # Designed to use show the player their cards each time they choose to hit
-        for i in player.list:
-            print(f"Your card is {i} \n ")
-
-# Create a player class that has money inside it
+    def check_balance(num):
+        ''' Simple check to make sure the starting balance is a valid integer between the range of 
+        500 to 10,000'''
+        try:
+            if num >= 500 and num <= 10000:
+                return True
+            print("Sorry, please choose a starting balance in the range of 500 to 10,000")
+            return False
+        except:
+            print("Sory, that isn't an acceptable amount of money. Please enter a starting balance in the range of 500 to 10,000")
+            return False
